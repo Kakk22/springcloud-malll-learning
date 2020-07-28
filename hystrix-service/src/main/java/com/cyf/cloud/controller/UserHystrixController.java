@@ -23,4 +23,24 @@ public class UserHystrixController {
         return userService.getUser(id);
     }
 
+    @GetMapping("/testCommand/{id}")
+    public CommonResult testCommand(@PathVariable Long id) {
+        return userService.getUserCommand(id);
+    }
+
+    @GetMapping("/testException/{id}")
+    public CommonResult testException(@PathVariable Long id) {
+        return userService.getUserException(id);
+    }
+
+    @GetMapping("/testCache/{id}")
+    public CommonResult testCache(@PathVariable Long id) {
+        userService.getUserCache(id);
+        userService.getUserCache(id);
+        userService.getUserCache(id);
+        return new CommonResult("操作成功", 200);
+    }
+
+
+
 }
